@@ -1,5 +1,6 @@
-#include <iostream>
-using namespace std;
+#ifndef BUBBLE_SORT_H_
+#define BUBBLE_SORT_H_
+
 
 void bubbleSort(int* array, int size){
     bool swap = true;
@@ -16,3 +17,5 @@ void bubbleSort(int* array, int size){
         }
     }
 }
+
+#endif

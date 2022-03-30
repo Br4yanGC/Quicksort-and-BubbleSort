@@ -1,5 +1,10 @@
+#ifndef FUNCTIONS_H_
+#define FUNCTIONS_H_
+
 #include <iostream>
-#include<ctime>
+#include <ctime>
+#include <fstream>
+#include "bubble_sort.h"
 
 using namespace std;
 
@@ -22,3 +27,20 @@ void displayArray(int* _array,int _size){
     }
     cout<<endl;
 }
+
+//Ejecuta un algoritmo de ordenamiento sobre un array de tamaño _size
+void executeSorting(int _size){
+    clock_t time = clock();
+    int* _array = generateArray(_size);
+    bubbleSort(_array, _size);
+    time = clock() - time;
+
+    fstream myFile;
+    myFile.open("sorting_time.txt", ios::app);
+    if(myFile.is_open()){
+        myFile<<"Sorting an array of "<<_size<<" size "<<"has taken "<<(long double)time/CLOCKS_PER_SEC<<" seconds.\n";
+        myFile.close();
+    }
+}
+
+#endif 

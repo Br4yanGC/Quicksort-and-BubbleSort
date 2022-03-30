@@ -5,10 +5,8 @@
 using namespace std;
 
 int main(){
-    int size=4;
-    int* _array = new int[size]{3,1,2,5};
-    bubbleSort(_array, size);
-    displayArray(_array, size);
-    delete [] _array;
-    _array = nullptr;
+    executeSorting(10);
+    executeSorting(100);
+    executeSorting(1000);
+    executeSorting(10000);
 }
