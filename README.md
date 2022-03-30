@@ -1,1 +1,1 @@
-# Quicksort-and-BubbleSort
+# Quicksort-and-Bubblesort
