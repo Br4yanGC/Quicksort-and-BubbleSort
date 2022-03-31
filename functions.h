@@ -46,14 +46,25 @@ void displayArray(int* _array,int _size){
     cout<<endl;
 }
 
+//Permite imprimir el vector en consola
+void displayVec(vector<int>& vec, int _size){
+    for(int i = 0; i <_size; i++){
+        cout<<vec[i]<<" ";
+    }
+    cout<<endl;
+}
+
 //Ejecuta un algoritmo de ordenamiento sobre un array de tamaño _size
 void executeSorting(int _size, char option){
-    clock_t time = clock();
+    
     if (option=='b')
     {
         int* _array = generateArray(_size);
+        displayArray(_array, _size);
+        clock_t time = clock();
         bubbleSort(_array, _size);
         time = clock() - time;
+        displayArray(_array, _size);
         fstream myFile;
         myFile.open("sorting_time_bubble.txt", ios::app);
         if(myFile.is_open()){
@@ -63,8 +74,11 @@ void executeSorting(int _size, char option){
     }
     else if (option=='q'){
         vector<int> vec = generateVec(_size);
-        quicksort(vec);
+        displayVec(vec, _size);
+        clock_t time = clock();
+        vec = quicksort(vec);
         time = clock() - time;
+        displayVec(vec, _size);
         fstream myFile;
         myFile.open("sorting_time_quick.txt", ios::app);
         if(myFile.is_open()){
@@ -72,7 +86,7 @@ void executeSorting(int _size, char option){
             myFile.close();
         }
     }
-    
+    cout<<endl;
 }
 
 
