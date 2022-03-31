@@ -2,11 +2,15 @@
 #include <memory>
 #include "bubble_sort.h"
 #include "functions.h"
+
 using namespace std;
 
 int main(){
-    executeSorting(10);
-    executeSorting(100);
-    executeSorting(1000);
-    executeSorting(10000);
+    executeSorting(100, 'b');
+    executeSorting(1000, 'b');
+    executeSorting(10000, 'b');
+
+    executeSorting(100, 'q');
+    executeSorting(1000, 'q');
+    executeSorting(10000, 'q');
 }

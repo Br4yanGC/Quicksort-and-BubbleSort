@@ -4,7 +4,10 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
+#include <vector>
 #include "bubble_sort.h"
+#include "quick_sort.h"
+
 
 using namespace std;
 
@@ -20,6 +23,21 @@ int* generateArray(int _size)
     return _array;
 }
 
+
+ //Genera un vector de tamanio _size con numeros random del 1 al 100
+vector<int> generateVec(int _size)
+{
+    vector<int> vec;                 
+    srand(time(0));               
+    for(int i = 0; i <_size; i++){
+        vec.push_back(rand() % 100 + 1);
+    }
+    return vec;
+}
+
+
+
+
 //Permite imprimir el array en consola
 void displayArray(int* _array,int _size){
     for(int i = 0; i <_size; i++){
@@ -29,18 +47,33 @@ void displayArray(int* _array,int _size){
 }
 
 //Ejecuta un algoritmo de ordenamiento sobre un array de tamaño _size
-void executeSorting(int _size){
+void executeSorting(int _size, char option){
     clock_t time = clock();
-    int* _array = generateArray(_size);
-    bubbleSort(_array, _size);
-    time = clock() - time;
-
-    fstream myFile;
-    myFile.open("sorting_time.txt", ios::app);
-    if(myFile.is_open()){
-        myFile<<"Sorting an array of "<<_size<<" size "<<"has taken "<<(long double)time/CLOCKS_PER_SEC<<" seconds.\n";
-        myFile.close();
+    if (option=='b')
+    {
+        int* _array = generateArray(_size);
+        bubbleSort(_array, _size);
+        time = clock() - time;
+        fstream myFile;
+        myFile.open("sorting_time_bubble.txt", ios::app);
+        if(myFile.is_open()){
+            myFile<<"Sorting an array of "<<_size<<" size "<<"has taken "<<(long double)time/CLOCKS_PER_SEC<<" seconds.\n";
+            myFile.close();
+        }
     }
+    else if (option=='q'){
+        vector<int> vec = generateVec(_size);
+        quicksort(vec);
+        time = clock() - time;
+        fstream myFile;
+        myFile.open("sorting_time_quick.txt", ios::app);
+        if(myFile.is_open()){
+            myFile<<"Sorting an array of "<<_size<<" size "<<"has taken "<<(long double)time/CLOCKS_PER_SEC<<" seconds.\n";
+            myFile.close();
+        }
+    }
+    
 }
+
 
 #endif 
