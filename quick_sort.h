@@ -8,6 +8,7 @@
 #include <vector>
 using namespace std;
 
+
 vector<int> operator+(const vector<int>& vect1, const vector<int>& vect2)
 {
     std::vector<int> res;
@@ -18,15 +19,13 @@ vector<int> operator+(const vector<int>& vect1, const vector<int>& vect2)
 }
 
 
-template<typename T>
-vector<T> quicksort(vector<T> array){
+vector<int> quicksort(vector<int> array){
     if(array.size() < 2)
         return array;
 
-
-    T pivote = array[0];
-    vector<T> less;
-    vector<T> greater;
+    int pivote = array[0];
+    vector<int> less;
+    vector<int> greater;
 
     for(auto i = 1; i < array.size(); ++i){
         if(array[i] <= pivote)
